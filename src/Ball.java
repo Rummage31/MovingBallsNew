@@ -9,7 +9,7 @@ public class Ball extends JPanel implements ActionListener{
     Timer timer = new Timer(5, this);
     Color color = new Color(117, 177, 198);
     public Ball() {
-
+//"hello
         size = (int) (random() * 50) + 10;
         color = new Color((int) (random() * 255) + 1, (int) (random() * 255) + 1, (int) (random() * 255) + 1);
         xSpeed = (int) (random() * 10) + 1;
