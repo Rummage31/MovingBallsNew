@@ -2,24 +2,19 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class Panel {
-   // Ball[] balls = new Ball[20];
-    public void makeP() {
+public class PanelMine extends JPanel{
+    Ball[] balls = new Ball[20];
+    public void PanelMine() {
 
-        JFrame mainF = new JFrame("I Love CompSci");
-        JPanel mainP = new JPanel();
-        mainF.add(mainP);
-        mainF.setSize(1000,1000);
-        mainP.setBackground(new Color(70, 71, 77));
-        mainF.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainF.setVisible(true);
-
-//        for(int i = 0; i<balls.length;i++) {
-//            Ball ball = new Ball();
-//            balls[i] = ball;
-//            mainP.add(ball);
-//
-//        }
+    }
+    @Override
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        for(int i = 0; i<balls.length;i++) {
+            Ball ball = new Ball();
+            balls[i] = ball;
+        }
+        repaint();
     }
 
 }
