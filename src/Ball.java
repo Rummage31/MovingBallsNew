@@ -3,12 +3,12 @@ import static java.lang.Math.random;
 
 public class Ball {
     private int size, xSpeed, ySpeed, x, y;
-    Color color = new Color(128, 117, 198);
+    private Color color;
 
     public Ball() {
 
+        color = new Color(115, 105, 185);
         size = (int) (random() * 50) + 10;
-        color = new Color((int) (random() * 255) + 1, (int) (random() * 255) + 1, (int) (random() * 255) + 1);
         xSpeed = (int) (random() * 10) + 1;
         ySpeed = (int) (random() * 10) + 1;
         x = (int) (random() * 100) + 1;
@@ -16,6 +16,8 @@ public class Ball {
 
 
     }
+
+
 
     public void ballMove(double wall1, double wall2){
 
@@ -32,11 +34,55 @@ public class Ball {
         }
     }
 
+    public void moveRight(double wall1, double wall2){
+        x += xSpeed;
+        if(x >= wall1 - size || x < 0){
+            xSpeed *= -1;
+
+        }
+        else if(y >= wall2- size || y < 0){
+            ySpeed *= -1;
+
+        }
+    }
+    public void moveLeft(double wall1, double wall2){
+        x -= xSpeed;
+        if(x >= wall1 - size || x < 0){
+            xSpeed *= -1;
+
+        }
+        else if(y >= wall2- size || y < 0){
+            ySpeed *= -1;
+
+        }
+    }
+    public void moveDown(double wall1, double wall2){
+        y += ySpeed;
+        if(x >= wall1 - size || x < 0){
+            xSpeed *= -1;
+
+        }
+        else if(y >= wall2- size || y < 0){
+            ySpeed *= -1;
+
+        }
+    }
+    public void moveUp(double wall1, double wall2){
+        y -= ySpeed;
+        if(x >= wall1 - size || x < 0){
+            xSpeed *= -1;
+
+        }
+        else if(y >= wall2- size || y < 0){
+            ySpeed *= -1;
+
+        }
+    }
 
 
 
     public void drawBall(Graphics g) {
-        g.setColor(new Color(151, 162, 220));
+        g.setColor(color);
         g.fillOval(x, y, size, size);
     }
 }
