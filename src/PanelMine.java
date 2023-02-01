@@ -8,7 +8,7 @@ import java.awt.event.KeyListener;
 
 public class PanelMine extends JPanel{
     Ball[] balls = new Ball[20];
-    private double wall1,wall2;
+    private int wall1,wall2;
     private Ball yourBall = new Ball();
 
 

@@ -2,12 +2,12 @@ import java.awt.*;
 import static java.lang.Math.random;
 
 public class Ball {
-    private int size, xSpeed, ySpeed, x, y;
+    private int x,y,xSpeed,ySpeed,size;
     private Color color;
 
     public Ball() {
 
-        color = new Color(115, 105, 185);
+        color = new Color((int) (random() * 255), (int) (random() * 255), (int) (random() * 255));
         size = (int) (random() * 50) + 10;
         xSpeed = (int) (random() * 10) + 1;
         ySpeed = (int) (random() * 10) + 1;
@@ -34,48 +34,30 @@ public class Ball {
         }
     }
 
-    public void moveRight(double wall1, double wall2){
+    public void moveRight(int wall1, int wall2){
         x += xSpeed;
         if(x >= wall1 - size || x < 0){
-            xSpeed *= -1;
-
-        }
-        else if(y >= wall2- size || y < 0){
-            ySpeed *= -1;
+            x = 0;
 
         }
     }
-    public void moveLeft(double wall1, double wall2){
+    public void moveLeft(int wall1, int wall2){
         x -= xSpeed;
         if(x >= wall1 - size || x < 0){
-            xSpeed *= -1;
-
-        }
-        else if(y >= wall2- size || y < 0){
-            ySpeed *= -1;
+            x = wall1 - size;
 
         }
     }
-    public void moveDown(double wall1, double wall2){
+    public void moveDown(int wall1, int wall2){
         y += ySpeed;
-        if(x >= wall1 - size || x < 0){
-            xSpeed *= -1;
-
-        }
-        else if(y >= wall2- size || y < 0){
-            ySpeed *= -1;
-
+        if(y >= wall2 - size || y < 0){
+            y = wall2 - size;
         }
     }
-    public void moveUp(double wall1, double wall2){
+    public void moveUp(int wall1, int wall2){
         y -= ySpeed;
-        if(x >= wall1 - size || x < 0){
-            xSpeed *= -1;
-
-        }
-        else if(y >= wall2- size || y < 0){
-            ySpeed *= -1;
-
+        if(y >= wall2 - size || y < 0){
+            y = 0;
         }
     }
 
