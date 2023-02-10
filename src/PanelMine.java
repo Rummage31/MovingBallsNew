@@ -1,34 +1,51 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
+import java.util.*;
 
 
-public class PanelMine extends JPanel{
-    Ball[] balls = new Ball[20];
+public class PanelMine extends JPanel {
+    ArrayList<Ball> balls = new ArrayList<>();
     private int wall1,wall2;
     private Ball yourBall = new Ball();
-
+    private JButton add = new JButton("Add");
+    private JButton remove = new JButton("Remove");
 
     public PanelMine() {
 
         setBackground(new Color(70, 71, 77));
+        add(add);
+        add(remove);
 
 
 
-
-        for(int i = 0; i<balls.length;i++) {
+        for(int i = 0; i<20;i++) {
             Ball ball = new Ball();
-            balls[i] = ball;
+            balls.add(ball);
         }
+
+        add.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                balls.add(new Ball());
+            }
+
+        });
+        remove.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                balls.remove(0);
+            }
+
+        });
+
         addComponentListener(new ComponentAdapter() {
             public void componentResized(ComponentEvent e) {
                 wall1 = getWidth();
                 wall2 = getHeight();
             }
         });
+
+
+
 
 
 
@@ -73,10 +90,10 @@ public class PanelMine extends JPanel{
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        for(int i = 0; i<balls.length;i++) {
+        for(int i = 0; i<balls.size();i++) {
             yourBall.drawBall(g);
-            balls[i].drawBall(g);
-            balls[i].ballMove(wall1,wall2);
+            balls.get(i).drawBall(g);
+            balls.get(i).ballMove(wall1,wall2);
             try {
                 Thread.sleep(0);
             } catch (InterruptedException e) {
